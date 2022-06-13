@@ -52,4 +52,9 @@ public class ProductService implements IProductService{
         return productRepository.findAllByCategory(category);
     }
 
+    @Override
+    public Iterable<Product> findByPriceRange(String price1, String price2) {
+        return productRepository.findByPriceRange(price1,price2);
+    }
+
 }

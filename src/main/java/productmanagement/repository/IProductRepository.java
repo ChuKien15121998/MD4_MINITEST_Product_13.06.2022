@@ -9,8 +9,12 @@ import productmanagement.model.Product;
 public interface IProductRepository extends PagingAndSortingRepository<Product, Long> {
     Iterable<Product> findAllByNameContaining (String name);
     Iterable<Product> findAllByOrderByName();
+
     Iterable<Product> findAllByCategory (Category category);
-    @Modifying
+//    @Modifying
     @Query(value = "select * from product order by id desc limit 4 ", nativeQuery = true)
     Iterable<Product> findTop4New();
+
+    @Query(value = "select * from product where price between ?1 and ?2", nativeQuery = true)
+    Iterable<Product> findByPriceRange(String price1, String price2);
 }

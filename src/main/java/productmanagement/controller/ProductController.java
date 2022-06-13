@@ -46,4 +46,10 @@ public class ProductController {
         Iterable<Product> products = productService.findAllByOrderByName();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    @GetMapping("/findbypricerange/{price1}/{price2}")
+    public ResponseEntity<Iterable<Product>> findAllByPriceRange(@PathVariable String price1, @PathVariable String price2) {
+        Iterable<Product> products = productService.findByPriceRange(price1,price2);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }
