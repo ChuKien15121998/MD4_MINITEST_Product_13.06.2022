@@ -24,10 +24,10 @@ public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
 
-//    @GetMapping("/{id}/products")
-//    public ResponseEntity<Iterable<Category>> findProductsByCategory(@PathVariable Optional<String> id) {
-//        Optional<Category> categoryOptional = categoryService.findById(Long.valueOf(id.get()));
-//        Iterable<Product> products = productService.findAllByCategory(categoryOptional.get());
-//        return new ResponseEntity<>(products, HttpStatus.OK);
-//    }
+    @GetMapping("/{id}/products")
+    public ResponseEntity<Iterable<Product>> findProductsByCategory(@PathVariable Optional<String> id) {
+        Optional<Category> categoryOptional = categoryService.findById(Long.valueOf(id.get()));
+        Iterable<Product> products = productService.findAllByCategory(categoryOptional.get());
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }
